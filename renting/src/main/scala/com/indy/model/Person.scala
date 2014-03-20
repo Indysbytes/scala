@@ -1,8 +1,8 @@
-package main.scala.com.indy.model
+package com.indy.model
 
 import scala.beans.BeanProperty
 
-class Person(@BeanProperty id: Int,
+case class Person(@BeanProperty id: Int,
              @BeanProperty name: String,
              @BeanProperty phone: String) {
 
