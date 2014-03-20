@@ -10,8 +10,6 @@ Versions currently used in the project are:
 * [Spring](http://www.springsource.org/about): 4.0.2..RELEASE
 * [Hibernate](http://www.hibernate.org/): 4.2.3.Final
 
-The code also makes use of [HSQLDB](http://hsqldb.org/), but you'll probably want to replace that with the JDBC driver
-for whatever database you're using.
 
 
 Building and Running
