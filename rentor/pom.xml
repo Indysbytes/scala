@@ -133,12 +133,24 @@
             <version>1.7.5</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>1.6.2</version>
+        </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>4.2.3.Final</version>
             <scope>compile</scope>
+        </dependency>
+
+        <!--MySQL driver lib-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.12</version>
         </dependency>
 
         <dependency>
