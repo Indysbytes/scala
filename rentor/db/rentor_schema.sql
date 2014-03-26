@@ -6,6 +6,19 @@ CREATE SCHEMA IF NOT EXISTS `rentor` DEFAULT CHARACTER SET utf8 COLLATE utf8_gen
 USE `rentor` ;
 
 -- -----------------------------------------------------
+-- Create the users for this DB
+-- -----------------------------------------------------
+CREATE USER 'rentor'@'localhost' IDENTIFIED BY 'admin';
+GRANT ALL PRIVILEGES ON rentor.* TO 'rentor'@'localhost'  WITH GRANT OPTION;
+
+-- mysql> CREATE USER 'rentor'@'%' IDENTIFIED BY 'admin';
+-- mysql> GRANT ALL PRIVILEGES ON rentor.* TO 'rentor'@'%' WITH GRANT OPTION;
+
+-- find all users and their DBs
+select User,Host from mysql.user;
+
+
+-- -----------------------------------------------------
 -- Table `rentor`.`property`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `rentor`.`property` ;

@@ -5,31 +5,15 @@
     <!-- File appenders (daily rolling logs) -->
 
     <appender name="fileAppender" class="org.apache.log4j.FileAppender">
-        <param name="File"     value="/home/indy/bin/tomcat-633/sites/booking/logs/avalcal.log"/>
+        <param name="File"     value="/home/indy/bin/tomcat-633/sites/rentor/logs/rentor.log"/>
         <param name="Append"   value="True"/>
         <param name="Encoding" value="UTF-8"/>
 
-        <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
-            <param name="FileNamePattern" value="/home/indy/bin/tomcat-633/sites/booking/logs/avalcal.%d{yyyy-MM-dd}.log.gz"/>
-        </rollingPolicy>
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%d [%t] %c.%M(%L) : %p - %m%n"/>
         </layout>
     </appender>
 
-<!--    <appender name="fileAppender" class="org.apache.log4j.rolling.RollingFileAppender">
-        <param name="File"     value="/home/indy/bin/tomcat-633/sites/booking/logs/avalcal.log"/>
-        <param name="Append"   value="True"/>
-        <param name="Encoding" value="UTF-8"/>w
-
-        <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
-            <param name="FileNamePattern" value="/home/indy/bin/tomcat-633/sites/booking/logs/avalcal.%d{yyyy-MM-dd}.log.gz"/>
-        </rollingPolicy>
-        <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%d [%t] %c.%M(%L) : %p - %m%n"/>
-        </layout>
-    </appender>
--->
     <!-- File appenders (daily rolling logs) -->
     <appender name="ConsoleAppender" class="org.apache.log4j.ConsoleAppender">
         <layout class="org.apache.log4j.PatternLayout">

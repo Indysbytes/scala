@@ -11,13 +11,13 @@
     <br/>
     <form:label path="tenant_name">Tenant Name</form:label>  <form:input path="tenant_name" />  <form:errors path="tenant_name" cssStyle="color:red"/>
     <br/>
-    <form:label path="rent_start_date">Name</form:label>  <form:input path="rent_start_date" />
+    <form:label path="rent_start_date">Rent start date</form:label>  <form:input path="rent_start_date" />
     <br/>
-    <form:label path="rent_charge">Name</form:label>  <form:input path="rent_charge" />
+    <form:label path="rent_charge">Rent charge</form:label>  <form:input path="rent_charge" />
     <br/>
-    <form:label path="address">Name</form:label>  <form:input path="address" />
+    <form:label path="address">Adress</form:label>  <form:input path="address" />
     <br/>
-    <form:label path="area_code">Name</form:label>  <form:input path="area_code" />
+    <form:label path="area_code">Area code</form:label>  <form:input path="area_code" />
     <br/>
 
 

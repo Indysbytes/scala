@@ -27,24 +27,23 @@
 
 
     <!--  define where prop files are -->
-    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-          p:location="classpath:jdbc.properties" />
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:jdbc.properties"></property>
+
+    </bean>
 
     <!--  define datasource -->
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
-          p:driverClassName="${jdbc.driverClassName}"
-          p:url="${jdbc.databaseurl}"
-          p:username="${jdbc.username}"
-          p:password="${jdbc.password}" />
-
-
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.databaseurl}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
 
     <!--  define DB session -->
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
-        <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration"/>
-
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">${jdbc.dialect}</prop>
@@ -55,19 +54,22 @@
 
 
 
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="annotatedClasses">
-            <list>
-                <value>com.indy.rentor.data.Customer</value>
-            </list>
-        </property>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-                <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">create</prop>
-            </props>
-        </property>
-    </bean>
+    <!--<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+        <!--<property name="annotatedClasses">-->
+            <!--<list>-->
+                <!--<value>com.indy.rentor.data.Customer</value>-->
+            <!--</list>-->
+        <!--</property>-->
+        <!--<property name="hibernateProperties">-->
+            <!--<props>-->
+                <!--<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>-->
+                <!--<prop key="hibernate.show_sql">true</prop>-->
+                <!--<prop key="hibernate.hbm2ddl.auto">create</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+
+
 </beans>

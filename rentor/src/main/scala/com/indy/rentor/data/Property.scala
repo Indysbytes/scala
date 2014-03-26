@@ -1,11 +1,12 @@
 package com.indy.rentor.data
 
 import scala.beans.BeanProperty
-import javax.persistence.Entity
+import javax.persistence.{Table, Entity}
 import org.joda.time.DateTime
 
 
 @Entity
+@Table(name = "property", schema = "rentor")
 class Property extends AbstractEntity{
 
     @BeanProperty
