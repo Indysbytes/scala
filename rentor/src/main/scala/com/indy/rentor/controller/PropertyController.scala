@@ -61,7 +61,7 @@ class PropertyPageData {
     var tenant_name : String = _
 
     @BeanProperty
-    var rent_start_date : DateTime = _
+    var rent_start_date : DateTime = new DateTime();
 
     @BeanProperty
     var rent_charge: BigDecimal = _

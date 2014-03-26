@@ -1,11 +1,11 @@
 package com.indy.rentor.data
 
-import javax.persistence.{ MappedSuperclass, GeneratedValue, Id }
+import javax.persistence.{GenerationType, MappedSuperclass, GeneratedValue, Id}
 
 @MappedSuperclass
 abstract class AbstractEntity {
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   var id: Long = _
 
   def getId: Long = id
