@@ -5,9 +5,10 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
-        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <tx:annotation-driven/>
 
@@ -17,12 +18,41 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
-        <property name="driverClass" value="org.hsqldb.jdbcDriver"/>
-        <property name="jdbcUrl" value="jdbc:hsqldb:mem:scala-spring-hibernate"/>
-        <property name="user" value="sa"/>
-        <property name="password" value=""/>
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">-->
+        <!--<property name="driverClass" value="org.hsqldb.jdbcDriver"/>-->
+        <!--<property name="jdbcUrl" value="jdbc:hsqldb:mem:scala-spring-hibernate"/>-->
+        <!--<property name="user" value="sa"/>-->
+        <!--<property name="password" value=""/>-->
+    <!--</bean>-->
+
+
+    <!--  define where prop files are -->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+          p:location="classpath:jdbc.properties" />
+
+    <!--  define datasource -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+          p:driverClassName="${jdbc.driverClassName}"
+          p:url="${jdbc.databaseurl}"
+          p:username="${jdbc.username}"
+          p:password="${jdbc.password}" />
+
+
+
+    <!--  define DB session -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+        <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration"/>
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${jdbc.dialect}</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
     </bean>
+
 
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
