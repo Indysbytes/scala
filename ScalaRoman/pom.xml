@@ -1,0 +1,110 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.indy</groupId>
+  <artifactId>ScalaRomanPuzzle</artifactId>
+  <version>1.0-RELEASE</version>
+  <packaging>jar</packaging>
+
+  <name>ScalaRomanPuzzle</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <scala.test.version>1.9.1</scala.test.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>1.9.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_2.10</artifactId>
+            <version>${scala.test.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <sourceDirectory>src/main/scala</sourceDirectory>
+        <testSourceDirectory>src/test/scala</testSourceDirectory>
+        <plugins>
+
+
+            <plugin>
+                <groupId>org.scala-tools</groupId>
+                <artifactId>maven-scala-plugin</artifactId>
+                <version>2.15.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                        <!--<configuration>-->
+                            <!--<args>-->
+                                <!--<arg>-make:transitive</arg>-->
+                                <!--<arg>-dependencyfile</arg>-->
+                                <!--<arg>${project.build.directory}/.scala_dependencies</arg>-->
+                            <!--</args>-->
+                        <!--</configuration>-->
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <useFile>false</useFile>
+                    <disableXmlReport>true</disableXmlReport>
+                    <!-- If you have classpath issue like NoDefClassError,... -->
+                    <!-- useManifestOnlyJar>false</useManifestOnlyJar -->
+                    <includes>
+                        <include>**/*Test.*</include>
+                        <include>**/*Suite.*</include>
+                    </includes>
+                </configuration>
+            </plugin>
+
+
+            <!--<plugin>-->
+                <!--<groupId>net.alchim31.maven</groupId>-->
+                <!--<artifactId>scala-maven-plugin</artifactId>-->
+                <!--<version>3.1.5</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<goals>-->
+                            <!--<goal>compile</goal>-->
+                            <!--<goal>testCompile</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+
+            <!--</plugin>-->
+            <!-- enable scalatest -->
+
+            <plugin>
+                <groupId>org.scalatest</groupId>
+                <artifactId>scalatest-maven-plugin</artifactId>
+                <version>1.0-M2</version>
+                <executions>
+                    <execution>
+                        <id>test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <filereports>ScalaTestSuite.txt</filereports>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
