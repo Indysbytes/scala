@@ -25,14 +25,24 @@
             <version>${scala.test.version}</version>
         </dependency>
 
+        <!-- these both are needed for the logging to work -->
+        <dependency>
+            <groupId>com.weiglewilczek.slf4s</groupId>
+            <artifactId>slf4s_2.9.1</artifactId>
+            <version>1.0.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.6</version>
+        </dependency>
+
     </dependencies>
 
     <build>
         <sourceDirectory>src/main/scala</sourceDirectory>
         <testSourceDirectory>src/test/scala</testSourceDirectory>
         <plugins>
-
-
             <plugin>
                 <groupId>org.scala-tools</groupId>
                 <artifactId>maven-scala-plugin</artifactId>
@@ -43,13 +53,6 @@
                             <goal>compile</goal>
                             <goal>testCompile</goal>
                         </goals>
-                        <!--<configuration>-->
-                            <!--<args>-->
-                                <!--<arg>-make:transitive</arg>-->
-                                <!--<arg>-dependencyfile</arg>-->
-                                <!--<arg>${project.build.directory}/.scala_dependencies</arg>-->
-                            <!--</args>-->
-                        <!--</configuration>-->
                     </execution>
                 </executions>
             </plugin>
